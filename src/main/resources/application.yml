@@ -1,1 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    testdb:
+      jdbc-url: jdbc:mysql://localhost:3306/test
+      username: root
+      password: password
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  configuration:
+    testdb:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+      map-underscore-to-camel-case: true
+
+common:
+  env: 'local'
 
