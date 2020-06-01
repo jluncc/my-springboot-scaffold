@@ -1,7 +1,6 @@
 package com.example.scaffold.quartz;
 
 import com.example.scaffold.util.LogUtil;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CheckQuartz {
 
-    @Scheduled(cron = "0 0/1 * * * ?")
+    //@Scheduled(cron = "0 0/1 * * * ?")
     public void checkQuartz() {
         LogUtil.SYS.info("111");
         testLog();

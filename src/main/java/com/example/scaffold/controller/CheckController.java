@@ -1,10 +1,14 @@
 package com.example.scaffold.controller;
 
-import com.example.scaffold.util.LogUtil;
+import com.example.scaffold.model.jpa.Student;
+import com.example.scaffold.service.StudentService;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * 测试用的接口
@@ -14,18 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/scaffold/api/v1/check")
 public class CheckController {
+    @Autowired
+    private StudentService studentService;
 
-    @ApiOperation("[测试]测试接口")
-    @GetMapping("/info")
-    public String info() {
-        LogUtil.SYS.info("000");
-        testLog();
-        LogUtil.SYS.info("333");
-        return "Hello!";
-    }
-
-    private void testLog() {
-        LogUtil.SYS.info("111");
+    @ApiOperation("[测试]根据年龄获取学生信息")
+    @GetMapping("/find/student")
+    public String findStudentByAge(Integer age) {
+        List<Student> studentList = studentService.findStuByAge(age);
+        return String.valueOf(studentList.size());
     }
 
 }

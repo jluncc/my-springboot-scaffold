@@ -26,7 +26,7 @@ public class TestDBConfig {
 
     // 1.数据库连接信息
     @Bean(name = "testDBDataSource")
-    @ConfigurationProperties(prefix = "spring.datasource.testdb")
+    @ConfigurationProperties(prefix = "mybatis.datasource.testdb")
     @Primary
     public DataSource dataSource() {
         return DataSourceBuilder.create().build();
