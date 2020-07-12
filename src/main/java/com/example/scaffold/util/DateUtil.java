@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -28,4 +29,19 @@ public class DateUtil {
         Date date = format.parse(stringDate);
         return date;
     }
+
+    /**
+     * 根据传进日期，加上或减去给定时间单位的时间
+     * @param date 需要增加或减去的日期
+     * @param number 增加或减去的时间数值
+     * @param timeUnit 增加或减去的时间单位，如Calendar.SECOND/Calendar.MINUTE等常量
+     * @return Date对象的日期
+     */
+    public static Date getDatePlusOrMinusTimeUnit(Date date, Integer number, Integer timeUnit) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        c.add(timeUnit, number);
+        return c.getTime();
+    }
+
 }

@@ -1,6 +1,6 @@
 package com.example.scaffold.aspect;
 
-import com.alibaba.fastjson.JSON;
+import com.example.scaffold.util.JsonUtil;
 import com.example.scaffold.util.LogUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -43,7 +43,7 @@ public class RequestLogAspect {
         long end = System.currentTimeMillis();
         String res = result.toString();
         if (!"GET".equals(request.getMethod()) || isError) {
-            res = JSON.toJSONString(request);
+            res = JsonUtil.to(request);
         }
         long costTime = end - start;
         if (costTime > 5000) {
