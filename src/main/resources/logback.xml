@@ -4,8 +4,6 @@
     <!-- 1.定义常量 -->
     <!-- 日志存储路径 -->
     <property name="LOG_HOME" value="/Users/jinglun/Desktop/logs" />
-    <!-- 日志格式 -->
-    <property name="pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{traceId}][%thread] %-5level (%file:%line\) - %msg%n" />
 
     <!-- 2.定义不同appender -->
     <!-- 控制台日志 -->

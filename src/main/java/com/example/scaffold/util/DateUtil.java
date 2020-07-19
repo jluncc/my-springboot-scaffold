@@ -14,6 +14,8 @@ import java.util.Date;
  */
 public class DateUtil {
 
+    public static final String COMMON_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss.SSS";
+
     /**
      * 根据传进的日期格式，及字符串日期，转成对应Date对象
      * @param stringDate 字符串日期
@@ -42,6 +44,15 @@ public class DateUtil {
         c.setTime(date);
         c.add(timeUnit, number);
         return c.getTime();
+    }
+
+    /**
+     * 根据给定日期格式，转换时间戳（毫秒级）
+     */
+    public static String formatDate(Long timestamp, String pattern) {
+        SimpleDateFormat formatter = new SimpleDateFormat(pattern);
+        Date date = new Date(timestamp);
+        return formatter.format(date);
     }
 
 }

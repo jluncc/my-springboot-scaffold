@@ -41,7 +41,7 @@ public class RequestLogAspect {
 
     private void log(HttpServletRequest request, Object args[], Object result, long start, boolean isError) {
         long end = System.currentTimeMillis();
-        String res = result.toString();
+        String res = JsonUtil.to(result);
         if (!"GET".equals(request.getMethod()) || isError) {
             res = JsonUtil.to(request);
         }
