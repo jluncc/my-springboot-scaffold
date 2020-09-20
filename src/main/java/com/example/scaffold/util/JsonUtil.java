@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 
 /**
@@ -44,6 +46,15 @@ public class JsonUtil {
         try {
             return objectMapper.readValue(json, clazz);
         } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static <T> T from(String json, Type type) {
+        try {
+            return objectMapper.readValue(json, objectMapper.constructType(type));
+        } catch (IOException e) {
             e.printStackTrace();
             return null;
         }

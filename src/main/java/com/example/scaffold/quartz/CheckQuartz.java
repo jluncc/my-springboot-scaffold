@@ -1,7 +1,6 @@
 package com.example.scaffold.quartz;
 
 import com.example.scaffold.util.LogUtil;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class CheckQuartz extends BaseQuartz {
 
     @Override
-    @Scheduled(cron = "0/20 * * * * ?")
+    //@Scheduled(cron = "0/20 * * * * ?")
     public void run() {
         super.run();
     }

@@ -1,5 +1,7 @@
 package com.example.scaffold.service;
 
+import com.example.scaffold.annotation.MethodCache;
+import com.example.scaffold.annotation.ParamCache;
 import com.example.scaffold.model.jpa.Student;
 import com.example.scaffold.repository.testDB.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,8 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
-    public List<Student> findStuByAge(Integer age) {
+    @MethodCache(key = "stuAge", expire = 60)
+    public List<Student> findStuByAge(@ParamCache Integer age) {
         if (null == age) return new ArrayList<>();
         return studentRepository.findStuByAge(age);
     }
